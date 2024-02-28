@@ -31,4 +31,12 @@ public class UserService {
     UserDTO userDTO = modelMapper.map(user, UserDTO.class);
     return userDTO;
   }
+
+  public User insert(User obj) {
+    return repo.insert(obj);
+  }
+
+  public User fromDTO(UserDTO objDto) {
+    return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
+  }
 }
