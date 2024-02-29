@@ -2,6 +2,7 @@ package com.project.demo.config;
 
 import com.project.demo.domain.Post;
 import com.project.demo.domain.User;
+import com.project.demo.dto.AuthorDTO;
 import com.project.demo.repository.PostRepository;
 import com.project.demo.repository.UserRepository;
 import java.time.Instant;
@@ -31,12 +32,14 @@ public class Instantiation implements CommandLineRunner {
     User alex = new User(null, "Alex Green", "alex@gmail.com");
     User bob = new User(null, "Bob Grey", "bob@gmail.com");
 
+    userRepository.saveAll(Arrays.asList(maria, alex, bob));
+
     Post post1 = new Post(
       null,
       formattedInstant("23/01/2018"),
       "Partiu viagem",
       "Vou viajar para São Paulo. Abraços",
-      maria
+      new AuthorDTO(maria)
     );
 
     Post post2 = new Post(
@@ -44,10 +47,9 @@ public class Instantiation implements CommandLineRunner {
       formattedInstant("23/03/2018"),
       "Bom Dia",
       "Acordei feliz hoje",
-      maria
+      new AuthorDTO(maria)
     );
 
-    userRepository.saveAll(Arrays.asList(maria, alex, bob));
     postRepository.saveAll(Arrays.asList(post1, post2));
   }
 
