@@ -28,13 +28,13 @@ public class Post implements Serializable {
 
   public Post(
     String id,
-    Instant date,
+    Instant instant,
     String title,
     String body,
     AuthorDTO author
   ) {
     this.id = id;
-    this.date = date;
+    this.date = instant;
     this.title = title;
     this.body = body;
     this.author = author;
